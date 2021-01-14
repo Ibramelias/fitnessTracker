@@ -44,17 +44,9 @@ app.get("/stats", (req, res) => {
 
 app.listen(process.env.PORT || 3000, () => {
     console.log("App running on port 3000!");
-  });
+});
 
 
-
-// fitness.create(data)
-//     .then(dbfitness => {
-//         console.log(dbfitness);
-//     })
-//     .catch(({ message }) => {
-//         console.log(message);
-//     });
 
 
 
