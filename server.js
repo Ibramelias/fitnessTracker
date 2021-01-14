@@ -1,7 +1,10 @@
-const {json} = require("express");
-const express = require ("express");
-const mongojs = ("mongojs");
-const logger = require ("morgan");
+const express = require("express");
+// const mongojs = ("mongojs");
+const logger = require("morgan");
+const mongoose = require("mongoose")
+const exercise = require("./model/exercise");
+
+const path = require("path")
 
 const app = express();
 
@@ -12,21 +15,46 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
-const databaseUrl = "fitness";
-const collection = ["workout"];
 
-const db = mongojs(databaseUrl, collection);
+mongoose.connect(
+    process.env.MONGODB_URI || 'mongodb://localhost/deep-thoughts',
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      useCreateIndex: true,
+      useFindAndModify: false
+    }
+);
 
-db.on("error", error=>{
-    console.log("Database Error:", error);
-});
 
-app.get("/", (req,res)=>{
+app.get("/", (req, res) => {
     res.send(index.html);
 });
 
-
-
-app.post("/submit", (req,res)=>{
-    console.log(req.body)
+app.get("/exercise", (req, res) => {
+    res.sendFile(path.join(__dirname, "./public/exercise.html"));
 });
+
+app.get("/stats", (req, res) => {
+    res.sendFile(path.join(__dirname, "./public/stats.html"));
+});
+
+
+
+
+app.listen(process.env.PORT || 3000, () => {
+    console.log("App running on port 3000!");
+  });
+
+
+
+// fitness.create(data)
+//     .then(dbfitness => {
+//         console.log(dbfitness);
+//     })
+//     .catch(({ message }) => {
+//         console.log(message);
+//     });
+
+
+
