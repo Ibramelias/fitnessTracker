@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const exercises = new Schema({
+const exercisesSchemas = new Schema({
     type: {
         type: Option,
 
@@ -41,10 +41,10 @@ const exercises = new Schema({
         required: true
     }
 
+});
 
 
+const fitness = mongoose.model("fitness", exercisesSchemas)
 
 
-
-
-})
+module.exports = fitness;
