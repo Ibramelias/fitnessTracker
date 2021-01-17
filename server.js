@@ -1,5 +1,4 @@
 const express = require("express");
-// const mongojs = ("mongojs");
 const logger = require("morgan");
 const mongoose = require("mongoose");
 const path = require("path");
@@ -27,6 +26,8 @@ mongoose.connect ( MONGODB_URI || 'mongodb://localhost/workoutdb',
     }
 );
 
+
+// to make sure we are connected with MongoDB
 mongoose.connection.on('connected', ()=>{
     console.log("Mongoose is conneced")
 })
@@ -94,7 +95,7 @@ app.get("/api/workouts/range", (req,res)=>{
 })
 
 
-
+// Listening to server PORT
 app.listen(process.env.PORT || 3000, () => {
     console.log("App running on port 3000!");
 });
