@@ -38,13 +38,17 @@ const ExerciseSchemas = new Schema({
             default: 0
         },
 
-    }]
+    }],
 
+    totalDuration: {
+        type: Number,
+        default: 0,
+    }
 
 });
 
 
-const Exercise = mongoose.model("exercise", ExerciseSchemas)
+const Exercise = mongoose.model("Exercise", ExerciseSchemas)
 
 
 module.exports = Exercise;
