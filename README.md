@@ -15,7 +15,7 @@ The application allows you to :
 * From the navebar, Click "Dashboard" to view your stats!
 
 
-## Installution.
+## Installation.
 * Clone the repo to your local machine.
 * Make sure your machine running mongo.
 * run `npm install` 
