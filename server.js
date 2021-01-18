@@ -15,11 +15,10 @@ app.use(express.json());
 app.use(express.static("public"));
 
 
-//password Ibram-123456
 
-const MONGODB_URI = 'mongodb+srv://ibram-admin:Ibram-123456@cluster0.gteek.mongodb.net/workouts?retryWrites=true&w=majority'
 
-mongoose.connect(MONGODB_URI || 'mongodb://localhost/workouts',
+// connecting with Mongodb
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/workouts',
     {
         useNewUrlParser: true,
         useUnifiedTopology: true,
@@ -35,10 +34,10 @@ mongoose.connection.on('connected', () => {
 })
 
 
-// API routes
-
+// API Routes
 require("./Routes/api-route")(app);
-require("./Routes/html- routes")(app)
+// HTML Routes
+require("./Routes/html- routes")(app);
 
 
 // Listening to server PORT
