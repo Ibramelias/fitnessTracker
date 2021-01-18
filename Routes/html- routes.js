@@ -1,8 +1,7 @@
 
+// require path to html // 
 const path = require("path");
 
-
-// html routes
 module.exports = function (app) {
 
     app.get("/", (req, res) => {

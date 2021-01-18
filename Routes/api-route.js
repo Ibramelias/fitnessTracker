@@ -1,3 +1,5 @@
+
+// require models //
 const db = require("../models");
 
 // Get our app for routing functionality
@@ -6,7 +8,6 @@ module.exports = function (app) {
     // Route to get all workouts
     app.get("/api/workouts", (req, res) => {
         db.Exercise.find({}).then(data => {
-            // Loop through the returned data and continually add to the totalduration
             data.forEach(exercise => {
                 var total = 0;
                 exercise.exercises.forEach(e => {
@@ -14,7 +15,6 @@ module.exports = function (app) {
                 });
                 exercise.totalDuration = total;
             });
-            // Actually returns the data from our db
             res.json(data);
         }).catch(err => {
             console.log(err);
